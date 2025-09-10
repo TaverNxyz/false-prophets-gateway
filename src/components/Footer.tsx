@@ -49,7 +49,7 @@ export const Footer = () => {
           {/* Join Discord */}
           <div className="md:text-right space-y-4">
             <motion.a
-              href="https://discord.gg/your-invite-link"
+              href="https://discord.gg/prophetgang"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-champagne text-background px-6 py-3 rounded font-display font-medium hover:bg-champagne-dark transition-colors"

@@ -57,7 +57,7 @@ export const Navigation = ({ activeSection, onSectionChange }: NavigationProps) 
             asChild
           >
             <motion.a
-              href="https://discord.gg/your-invite-link"
+              href="https://discord.gg/prophetgang"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}

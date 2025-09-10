@@ -6,6 +6,7 @@ import { HeroSection } from '@/components/HeroSection';
 import { AboutSection } from '@/components/AboutSection';
 import { RulesSection } from '@/components/RulesSection';
 import { ResourcesSection } from '@/components/ResourcesSection';
+import { LiveStreamSection } from '@/components/LiveStreamSection';
 import { Footer } from '@/components/Footer';
 
 const Index = () => {
@@ -103,6 +104,7 @@ const Index = () => {
               transition={{ duration: 0.5, ease: "easeInOut" }}
             >
               <ResourcesSection />
+              <LiveStreamSection />
             </motion.div>
           )}
         </AnimatePresence>

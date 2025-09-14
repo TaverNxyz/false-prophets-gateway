@@ -371,10 +371,8 @@ export const AnimatedPipe = () => {
         />
         
         {/* Subtle environment lighting */}
-        <hemisphereLight
-          skyColor="#87CEEB"
-          groundColor="#2F2F2F"
-          intensity={0.3}
+        <hemisphereLight 
+          args={["#87CEEB", "#2F2F2F", 0.3]}
         />
         
         <MethPipeScene />

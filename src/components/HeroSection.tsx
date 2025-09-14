@@ -18,11 +18,9 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="font-display text-6xl lg:text-8xl font-black text-champagne text-glow leading-none"
+              className="font-display text-6xl lg:text-8xl font-black text-champagne text-glow leading-none tracking-wider"
             >
-              FALSE
-              <br />
-              PROPHETS
+              404
             </motion.h1>
             
             <motion.p
@@ -31,9 +29,9 @@ export const HeroSection = () => {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-xl lg:text-2xl text-muted-foreground font-inter max-w-lg"
             >
-              Judgment-Free Discourse.
+              Digital Underground.
               <br />
-              <span className="text-champagne">Informed Harm Reduction.</span>
+              <span className="text-champagne">Where the Lost Connect.</span>
             </motion.p>
           </div>
 
@@ -60,7 +58,7 @@ export const HeroSection = () => {
             </Button>
             
             <p className="text-sm text-muted-foreground font-inter">
-              A sanctuary for open discussion and peer-supported harm reduction
+              A digital sanctuary for tech enthusiasts, hackers, and digital nomads
             </p>
           </motion.div>
         </motion.div>

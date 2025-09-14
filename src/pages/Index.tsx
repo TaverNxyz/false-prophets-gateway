@@ -31,8 +31,8 @@ const Index = () => {
           animate={{ opacity: 1, scale: 1 }}
           className="text-center space-y-8"
         >
-          <div className="font-display text-6xl font-black text-champagne text-glow animate-glow-pulse">
-            FALSE PROPHETS
+          <div className="font-display text-6xl font-black text-champagne text-glow animate-glow-pulse tracking-wider">
+            404
           </div>
           <motion.div
             initial={{ width: 0 }}
@@ -41,7 +41,7 @@ const Index = () => {
             className="h-px bg-gradient-to-r from-transparent via-champagne to-transparent mx-auto"
           />
           <div className="text-muted-foreground font-inter">
-            Entering the sanctuary...
+            Connecting to the underground...
           </div>
         </motion.div>
       </div>

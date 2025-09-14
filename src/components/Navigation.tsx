@@ -25,10 +25,10 @@ export const Navigation = ({ activeSection, onSectionChange }: NavigationProps) 
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="font-display text-2xl text-champagne text-glow cursor-pointer"
+            className="font-display text-3xl font-bold text-champagne text-glow cursor-pointer tracking-wider"
             onClick={() => onSectionChange('hero')}
           >
-            FALSE PROPHETS
+            404
           </motion.div>
 
           {/* Navigation Items */}

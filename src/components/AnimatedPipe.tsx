@@ -38,50 +38,20 @@ const MethPipeBowl = ({ glowing }: { glowing: boolean }) => {
 
   return (
     <group>
-      {/* Main bowl - more bulbous shape */}
-      <Sphere ref={meshRef} args={[0.7, 32, 32]} position={[0, 0.8, 0]} scale={[1.2, 0.9, 1.2]}>
+      {/* Round bulb at the end */}
+      <Sphere ref={meshRef} args={[0.5, 32, 32]} position={[-2.5, 0, 0]}>
         <GlassMaterial glowing={glowing} emissiveIntensity={0.8} />
       </Sphere>
-      
-      {/* Bowl neck - connecting to stem */}
-      <Cylinder args={[0.12, 0.18, 0.3, 16]} position={[0.4, 0.65, 0]} rotation={[0, 0, -Math.PI / 8]}>
-        <GlassMaterial glowing={false} />
-      </Cylinder>
     </group>
   );
 };
 
-// Enhanced Straight Stem with realistic glass thickness
+// Straight tube stem
 const MethPipeStem = () => {
   return (
     <group>
-      {/* Main stem */}
-      <Cylinder args={[0.09, 0.09, 4.2, 16]} position={[2.3, 0.75, 0]} rotation={[0, 0, -Math.PI / 12]}>
-        <GlassMaterial glowing={false} />
-      </Cylinder>
-      
-      {/* Stem reinforcement rings for realism */}
-      <Cylinder args={[0.11, 0.11, 0.05, 16]} position={[1.2, 0.82, 0]} rotation={[0, 0, -Math.PI / 12]}>
-        <GlassMaterial glowing={false} />
-      </Cylinder>
-      <Cylinder args={[0.11, 0.11, 0.05, 16]} position={[3.4, 0.68, 0]} rotation={[0, 0, -Math.PI / 12]}>
-        <GlassMaterial glowing={false} />
-      </Cylinder>
-    </group>
-  );
-};
-
-// Enhanced Mouthpiece with flared end
-const MethPipeMouthpiece = () => {
-  return (
-    <group>
-      {/* Mouthpiece tube */}
-      <Cylinder args={[0.12, 0.09, 0.4, 16]} position={[4.3, 0.88, 0]} rotation={[0, 0, -Math.PI / 12]}>
-        <GlassMaterial glowing={false} />
-      </Cylinder>
-      
-      {/* Flared end */}
-      <Cylinder args={[0.15, 0.12, 0.1, 16]} position={[4.5, 0.91, 0]} rotation={[0, 0, -Math.PI / 12]}>
+      {/* Main straight tube */}
+      <Cylinder args={[0.08, 0.08, 4.5, 16]} position={[0, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
         <GlassMaterial glowing={false} />
       </Cylinder>
     </group>
@@ -120,7 +90,7 @@ const MethFlame = ({ visible }: { visible: boolean }) => {
   if (!visible) return null;
 
   return (
-    <group ref={flameRef} position={[0, 0.2, 0]}>
+    <group ref={flameRef} position={[-2.5, -0.7, 0]}>
       {/* Outer flame - orange/red */}
       <Cylinder ref={outerFlameRef} args={[0.12, 0.08, 0.5, 8]} position={[0, 0.1, 0]}>
         <meshStandardMaterial
@@ -209,7 +179,7 @@ const CrystalResidue = ({ visible }: { visible: boolean }) => {
   if (!visible) return null;
   
   return (
-    <group ref={crystalRef} position={[0, 0.5, 0]}>
+    <group ref={crystalRef} position={[-2.5, 0, 0]}>
       {/* Main crystal chunk */}
       <Box args={[0.35, 0.12, 0.35]} rotation={[0.2, 0.3, 0.1]}>
         <meshStandardMaterial
@@ -261,8 +231,8 @@ const MethPipeScene = () => {
   const vaporParticles = useMemo(() => {
     return Array.from({ length: 35 }, (_, i) => ({
       position: new Vector3(
-        (Math.random() - 0.5) * 0.6,
-        1.3 + Math.random() * 0.4,
+        -2.5 + (Math.random() - 0.5) * 0.6,
+        0.5 + Math.random() * 0.4,
         (Math.random() - 0.5) * 0.6
       ),
       delay: i * 0.12,
@@ -291,7 +261,6 @@ const MethPipeScene = () => {
       <group ref={groupRef}>
         <MethPipeBowl glowing={glowing.current} />
         <MethPipeStem />
-        <MethPipeMouthpiece />
         <MethFlame visible={flameVisible.current} />
         <CrystalResidue visible={crystalVisible.current} />
         
@@ -307,7 +276,7 @@ const MethPipeScene = () => {
         {/* Enhanced Lighting Setup */}
         {/* Main bowl glow */}
         <pointLight
-          position={[0, 0.8, 0]}
+          position={[-2.5, 0, 0]}
           color="#FF6B35"
           intensity={glowing.current ? 4 : 1.5}
           distance={10}
@@ -316,7 +285,7 @@ const MethPipeScene = () => {
         
         {/* Flame light */}
         <pointLight
-          position={[0, 0.3, 0]}
+          position={[-2.5, -0.5, 0]}
           color="#4A90E2"
           intensity={flameVisible.current ? 3 : 0}
           distance={6}

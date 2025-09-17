@@ -14,14 +14,99 @@ export const HeroSection = () => {
           className="space-y-8 z-10"
         >
           <div className="space-y-4">
-            <motion.h1
+            {/* 404/PROPHET Cross Design */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="font-display text-6xl lg:text-8xl font-black text-champagne text-glow leading-none tracking-wider"
+              className="relative w-64 h-80 mx-auto lg:mx-0"
             >
-              404
-            </motion.h1>
+              {/* Horizontal "404" */}
+              <div className="absolute top-16 left-0 right-0 flex items-center justify-center space-x-6">
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                  className="font-display text-4xl lg:text-5xl font-black text-champagne text-glow tracking-wider"
+                >
+                  4
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.6, duration: 0.6 }}
+                  className="font-display text-5xl lg:text-6xl font-black text-champagne text-glow tracking-wider"
+                >
+                  0
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.8, duration: 0.6 }}
+                  className="font-display text-4xl lg:text-5xl font-black text-champagne text-glow tracking-wider"
+                >
+                  4
+                </motion.div>
+              </div>
+
+              {/* Vertical "PROPHET" */}
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-1">
+                {/* P and R above the 0 */}
+                <motion.div
+                  initial={{ opacity: 0, y: -15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.0, duration: 0.5 }}
+                  className="font-display text-xl lg:text-2xl font-black text-champagne text-glow tracking-wider"
+                >
+                  P
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: -15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.1, duration: 0.5 }}
+                  className="font-display text-xl lg:text-2xl font-black text-champagne text-glow tracking-wider"
+                >
+                  R
+                </motion.div>
+                
+                {/* Spacer for the shared 0 */}
+                <div className="h-12 lg:h-14"></div>
+                
+                {/* P, H, E, T below the 0 */}
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.2, duration: 0.5 }}
+                  className="font-display text-xl lg:text-2xl font-black text-champagne text-glow tracking-wider"
+                >
+                  P
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.3, duration: 0.5 }}
+                  className="font-display text-xl lg:text-2xl font-black text-champagne text-glow tracking-wider"
+                >
+                  H
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.4, duration: 0.5 }}
+                  className="font-display text-xl lg:text-2xl font-black text-champagne text-glow tracking-wider"
+                >
+                  E
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.5, duration: 0.5 }}
+                  className="font-display text-xl lg:text-2xl font-black text-champagne text-glow tracking-wider"
+                >
+                  T
+                </motion.div>
+              </div>
+            </motion.div>
             
             <motion.p
               initial={{ opacity: 0, y: 20 }}

@@ -1,8 +1,9 @@
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { OrbitControls, Sphere, Cylinder, Box, Float, useTexture } from '@react-three/drei';
 import { Mesh, Group, Vector3, Color, DoubleSide, AdditiveBlending } from 'three';
 import * as THREE from 'three';
+import { FallbackPipe } from './FallbackPipe';
 
 // Enhanced Glass Material Component
 const GlassMaterial = ({ glowing, emissiveColor = "#FF6B35", emissiveIntensity = 0 }) => {
@@ -314,47 +315,105 @@ const MethPipeScene = () => {
   );
 };
 
-// Main Enhanced Animated Meth Pipe Component
+// Enhanced Error Boundary for WebGL
+const WebGLErrorBoundary = ({ children, fallback }: { children: React.ReactNode; fallback: React.ReactNode }) => {
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    const handleError = (event: ErrorEvent) => {
+      if (event.message?.includes('WebGL') || event.message?.includes('context')) {
+        setHasError(true);
+      }
+    };
+
+    window.addEventListener('error', handleError);
+    return () => window.removeEventListener('error', handleError);
+  }, []);
+
+  if (hasError) {
+    return <>{fallback}</>;
+  }
+
+  return <>{children}</>;
+};
+
+// WebGL Capability Check
+const checkWebGLSupport = () => {
+  try {
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    return !!gl;
+  } catch (e) {
+    return false;
+  }
+};
+
+// Main Enhanced Animated Pipe Component with Fallback
 export const AnimatedPipe = () => {
+  const [webglSupported, setWebglSupported] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    setWebglSupported(checkWebGLSupport());
+  }, []);
+
+  // Show fallback immediately if WebGL is not supported
+  if (webglSupported === false) {
+    return <FallbackPipe />;
+  }
+
+  // Show loading or fallback while checking
+  if (webglSupported === null) {
+    return <FallbackPipe />;
+  }
+
   return (
-    <div className="w-full h-full">
-      <Canvas
-        camera={{ position: [5, 2, 5], fov: 45 }}
-        className="bg-transparent"
-        shadows
-        gl={{ 
-          antialias: true, 
-          alpha: true,
-          powerPreference: "high-performance"
-        }}
-      >
-        {/* Enhanced Lighting Environment */}
-        <ambientLight intensity={0.2} color="#F7E7CE" />
-        <directionalLight
-          position={[10, 10, 8]}
-          intensity={1.5}
-          color="#F7E7CE"
-          castShadow
-          shadow-mapSize-width={2048}
-          shadow-mapSize-height={2048}
-        />
-        
-        {/* Subtle environment lighting */}
-        <hemisphereLight 
-          args={["#87CEEB", "#2F2F2F", 0.3]}
-        />
-        
-        <MethPipeScene />
-        
-        <OrbitControls
-          enablePan={false}
-          enableZoom={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 4}
-          autoRotate
-          autoRotateSpeed={0.2}
-        />
-      </Canvas>
-    </div>
+    <WebGLErrorBoundary fallback={<FallbackPipe />}>
+      <div className="w-full h-full">
+        <Canvas
+          camera={{ position: [5, 2, 5], fov: 45 }}
+          className="bg-transparent"
+          shadows
+          gl={{ 
+            antialias: true, 
+            alpha: true,
+            powerPreference: "high-performance",
+            failIfMajorPerformanceCaveat: false
+          }}
+          onCreated={(state) => {
+            // Additional error handling for WebGL context
+            state.gl.domElement.addEventListener('webglcontextlost', () => {
+              setWebglSupported(false);
+            });
+          }}
+        >
+          {/* Enhanced Lighting Environment */}
+          <ambientLight intensity={0.2} color="#F7E7CE" />
+          <directionalLight
+            position={[10, 10, 8]}
+            intensity={1.5}
+            color="#F7E7CE"
+            castShadow
+            shadow-mapSize-width={2048}
+            shadow-mapSize-height={2048}
+          />
+          
+          {/* Subtle environment lighting */}
+          <hemisphereLight 
+            args={["#87CEEB", "#2F2F2F", 0.3]}
+          />
+          
+          <MethPipeScene />
+          
+          <OrbitControls
+            enablePan={false}
+            enableZoom={false}
+            maxPolarAngle={Math.PI / 2}
+            minPolarAngle={Math.PI / 4}
+            autoRotate
+            autoRotateSpeed={0.2}
+          />
+        </Canvas>
+      </div>
+    </WebGLErrorBoundary>
   );
 };

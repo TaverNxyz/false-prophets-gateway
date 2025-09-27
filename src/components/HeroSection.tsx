@@ -132,7 +132,7 @@ export const HeroSection = () => {
               asChild
             >
               <motion.a
-                href="https://discord.gg/prophetgang"
+                href="https://discord.gg/404gang"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, y: -2 }}

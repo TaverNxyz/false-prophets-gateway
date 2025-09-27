@@ -133,7 +133,7 @@ export const LiveStreamSection = () => {
                   asChild
                 >
                   <a
-                    href="https://discord.gg/prophetgang"
+                    href="https://discord.gg/404gang"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2"

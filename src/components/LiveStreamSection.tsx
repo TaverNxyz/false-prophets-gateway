@@ -116,7 +116,7 @@ export const LiveStreamSection = () => {
                   asChild
                 >
                   <a
-                    href="http://live.tavernappy.xyz/"
+                    href="https://404live.tavernappy.xyz/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2"

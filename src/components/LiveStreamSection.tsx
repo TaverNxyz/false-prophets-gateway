@@ -41,7 +41,7 @@ export const LiveStreamSection = () => {
               {/* Live Stream Embed */}
               <div className="relative aspect-video bg-muted/20 rounded-lg overflow-hidden border border-champagne/20">
                 <iframe
-                  src="http://live.tavernappy.xyz/"
+                  src="https://404live.plentifulpower.xyz/"
                   className="w-full h-full"
                   frameBorder="0"
                   allowFullScreen

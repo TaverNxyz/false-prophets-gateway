@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { DiscordWidget } from './DiscordWidget';
 
 interface NavigationProps {
   activeSection: string;
@@ -30,6 +31,11 @@ export const Navigation = ({ activeSection, onSectionChange }: NavigationProps) 
           >
             404
           </motion.div>
+
+          {/* Discord Widget */}
+          <div className="hidden lg:block">
+            <DiscordWidget />
+          </div>
 
           {/* Navigation Items */}
           <div className="hidden md:flex items-center space-x-8">

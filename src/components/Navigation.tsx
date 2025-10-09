@@ -23,20 +23,18 @@ export const Navigation = ({ activeSection, onSectionChange }: NavigationProps) 
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo and Discord Widget */}
-          <div className="flex items-center gap-6">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="font-display text-3xl font-bold text-champagne text-glow cursor-pointer tracking-wider"
-              onClick={() => onSectionChange('hero')}
-            >
-              404
-            </motion.div>
+          {/* Logo */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="font-display text-3xl font-bold text-champagne text-glow cursor-pointer tracking-wider"
+            onClick={() => onSectionChange('hero')}
+          >
+            404
+          </motion.div>
 
-            {/* Discord Widget */}
-            <div className="hidden lg:flex items-center">
-              <DiscordWidget />
-            </div>
+          {/* Discord Widget */}
+          <div className="hidden lg:block">
+            <DiscordWidget />
           </div>
 
           {/* Navigation Items */}
